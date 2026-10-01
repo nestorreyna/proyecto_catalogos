@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de productos</title>
+
+  <link rel="stylesheet" href="estilos.css">
+  <script src="dist/index.js" defer></script>
+</head>
+<body>
+<button id="boton-prueba" type="button">Probar conexión</button><p id="mensaje-prueba"></p>
+    
+  <header>
+    <h1>Catálogo de productos</h1>
+    <p>Registro y consulta del inventario</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Agregar producto</h2>
+
+      <form id="formulario-producto">
+        <div class="campos">
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" required>
+          </div>
+
+          <div class="campo">
+            <label for="categoria">Categoría</label>
+            <select id="categoria" required>
+              <option value="">Seleccionar</option>
+              <option value="Periféricos">Periféricos</option>
+              <option value="Pantallas">Pantallas</option>
+              <option value="Componentes">Componentes</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="precio">Precio ($)</label>
+            <input id="precio" type="number" min="0" step="0.01" required>
+          </div>
+
+          <div class="campo">
+            <label for="stock">Stock</label>
+            <input id="stock" type="number" min="0" step="1" required>
+          </div>
+        </div>
+
+        <button type="submit">Agregar producto</button>
+      </form>
+
+      <p id="mensaje" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Buscar y filtrar</h2>
+
+      <div class="campos">
+        <div class="campo">
+          <label for="busqueda">Buscar por nombre</label>
+          <input id="busqueda" type="search" placeholder="Ej.: teclado">
+        </div>
+
+        <div class="campo">
+          <label for="filtro-categoria">Categoría</label>
+          <select id="filtro-categoria">
+            <option value="">Todas</option>
+            <option value="Periféricos">Periféricos</option>
+            <option value="Pantallas">Pantallas</option>
+            <option value="Componentes">Componentes</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="filtro-stock">Disponibilidad</label>
+          <select id="filtro-stock">
+            <option value="">Todos</option>
+            <option value="con-stock">Con stock</option>
+            <option value="sin-stock">Sin stock</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="precio-maximo">Precio máximo ($)</label>
+          <input id="precio-maximo" type="number" min="0" step="0.01"
+                 placeholder="Sin límite">
+        </div>
+      </div>
+
+      <button id="limpiar-filtros" type="button" class="secundario">
+        Limpiar filtros
+      </button>
+    </section>
+
+    <section class="panel">
+      <h2>Resumen del inventario</h2>
+      <p id="resumen" aria-live="polite">
+        Todavía no se cargaron los datos del inventario.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Productos</h2>
+      <p id="cantidad-visible" aria-live="polite"></p>
+
+      <div id="catalogo" class="catalogo">
+        <p>Los productos se mostrarán aquí.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
